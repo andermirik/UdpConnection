@@ -1,23 +1,28 @@
 #include <iostream>
 #include "udp_socket.h"
-
+#include <string>
 int main() {
-
-	net::udp::udp_socket sock2;
-	sock2.open(27002);
+	int port;
+	int port2;
+	std::cout << "src port: ";
+	std::cin >> port;
+	std::cout << "dst port: ";
+	std::cin >> port2;
 
 	net::udp::udp_socket sock;
-	sock.open(27001);
+	sock.open(port);
 
+	std::string s = "hello from " + std::to_string(port) + "\n";
 
-	sock.send(net::address(127, 0, 0, 1, 27002), "hello from 27001", strlen("hello from 27001"));
-	sock2.send(net::address(127, 0, 0, 1, 27001), "hello from 27002", strlen("hello from 27002"));
-
-	net::address sender;
-	char data[512];
-	sock2.receive(sender, data, sizeof(data));
-
-
+	while (true) {
+		net::address sender;
+		char data[256] = { 0 };
+		sock.send(net::address(127, 0, 0, 1, port2), s.c_str(), s.size());
+		if (sock.receive(sender, data, sizeof(data)) != -1) {
+			std::cout << sender.get_port() << ": " << std::endl;
+			std::cout << data << std::endl;
+		}
+	}
 
 	return(0);
 }

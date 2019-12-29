@@ -43,7 +43,7 @@ bool net::udp::udp_socket::open(uint32_t port)
 	if (bind(handle, (const sockaddr*)&addr, sizeof(sockaddr_in)) < 0) {
 		return false;
 	}
-
+	
 #if PLATFORM == PLATFORM_WINDOWS
 
 	DWORD nonBlocking = 1;
@@ -91,8 +91,8 @@ bool net::udp::udp_socket::send(net::address const & dest, void const * data, ui
 
 int net::udp::udp_socket::receive(net::address & sender, void * data, uint32_t size)
 {
-	uint8_t packet_data[512];
-	uint32_t maximum_packet_size = sizeof(packet_data);
+	//uint8_t packet_data[256];
+	//uint32_t maximum_packet_size = sizeof(packet_data);
 
 #if PLATFORM == PLATFORM_WINDOWS
 	typedef int socklen_t;
@@ -101,7 +101,7 @@ int net::udp::udp_socket::receive(net::address & sender, void * data, uint32_t s
 	sockaddr_in from;
 	socklen_t fromLength = sizeof(from);
 
-	int received_bytes = recvfrom(handle, (char*)packet_data, maximum_packet_size,
+	int received_bytes = recvfrom(handle, (char*)data, 256,
 		0, (sockaddr*)&from, &fromLength);
 
 	if (received_bytes <= 0)

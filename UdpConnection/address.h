@@ -12,7 +12,7 @@ namespace net {
 		uint8_t get_b() const;
 		uint8_t get_c() const;
 		uint8_t get_d() const;
-		uint8_t get_port() const;
+		uint16_t get_port() const;
 
 		bool operator==(address const& other) const;
 		bool operator!=(address const& other) const;

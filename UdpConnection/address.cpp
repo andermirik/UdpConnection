@@ -1,7 +1,7 @@
 #include "address.h"
 
 
-uint8_t net::address::get_port() const
+uint16_t net::address::get_port() const
 {
 	return port;
 }
