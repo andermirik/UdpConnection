@@ -1,13 +1,17 @@
 #include <iostream>
 #include "udp_socket.h"
 #include <string>
+
+int read_int(std::string str) {
+	int _int;
+	std::cout << str;
+	std::cin >> _int;
+	return _int;
+}
+
 int main() {
-	int port;
-	int port2;
-	std::cout << "src port: ";
-	std::cin >> port;
-	std::cout << "dst port: ";
-	std::cin >> port2;
+	int port = read_int("my port: ");
+	int port2 = read_int("to port: ");
 
 	net::udp::udp_socket sock;
 	sock.open(port);
