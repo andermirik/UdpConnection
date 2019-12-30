@@ -1,5 +1,11 @@
 #pragma once
-namespace udp {
+namespace net::udp {
 	class client {
+		void connect();
+
+		void send();
+		void recive();
+
+		void close();
 	};
 }

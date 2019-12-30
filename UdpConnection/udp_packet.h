@@ -1,5 +1,5 @@
 #pragma once
-namespace udp {
+namespace net::udp {
 	struct packet {
 		unsigned int proto_id;
 		unsigned int seq_number;
