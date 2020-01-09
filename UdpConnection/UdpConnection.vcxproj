@@ -29,6 +29,8 @@
   <ItemGroup>
     <ClCompile Include="address.cpp" />
     <ClCompile Include="main.cpp" />
+    <ClCompile Include="udp_client.cpp" />
+    <ClCompile Include="udp_server.cpp" />
     <ClCompile Include="udp_socket.cpp" />
   </ItemGroup>
   <PropertyGroup Label="Globals">

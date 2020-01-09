@@ -1,11 +1,18 @@
 #pragma once
+#include "address.h"
+#include "udp_socket.h"
+
 namespace net::udp {
 	class client {
-		void connect();
+	public:
+		void connect(net::address const& dest, int my_port);
 
 		void send();
-		void recive();
+		void receive();
 
 		void close();
+
+	private:
+		net::udp_socket sock;
 	};
 }

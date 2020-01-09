@@ -13,7 +13,7 @@ int main() {
 	int port = read_int("my port: ");
 	int port2 = read_int("to port: ");
 
-	net::udp::udp_socket sock;
+	net::udp_socket sock;
 	sock.open(port);
 
 	std::string s = "hello from " + std::to_string(port) + "\n";
